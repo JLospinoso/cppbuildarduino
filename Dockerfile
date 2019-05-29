@@ -1,8 +1,10 @@
 FROM ubuntu:18.04
 RUN apt update && apt upgrade -y && \
-    apt install software-properties-common make git wget build-essential gcc-8 -y
-
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 10 && \
+    apt install software-properties-common make git -y && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+    apt update && apt upgrade -y && \
+    apt install wget gcc-8 g++-8 -y && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 10 && \
     update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 10
 
 # Install cmake v3.14.4
