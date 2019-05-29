@@ -1,4 +1,4 @@
-FROM ubuntu:19.04
+FROM ubuntu:18.04
 RUN apt update && apt upgrade -y && \
     apt install software-properties-common make git wget build-essential gcc-8 -y
 
@@ -16,6 +16,7 @@ RUN rm -rf cmake-3.14.4
 # Install Arduino v1.8.9
 RUN wget -q https://downloads.arduino.cc/arduino-1.8.9-linux64.tar.xz
 RUN tar xf arduino-1.8.9-linux64.tar.xz
+RUN rm arduino-1.8.9-linux64.tar.xz
 RUN mv arduino-1.8.9 /opt/arduino/
 RUN chmod +x /opt/arduino/install.sh
 RUN /opt/arduino/install.sh
